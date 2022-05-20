@@ -1,0 +1,72 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page | Statistic";
+}
+
+<div class="text-center main">
+   <div>
+        <h2 class="display-4">Statistics</h2>
+        <p>Enter one, two or three numerical numbers and click calculate button to get their statitics.</p>
+   </div>
+    <br />
+    <form method="post">
+        <div class="row">
+             <div class="col-md-2">
+                 <label>First Number</label>
+            </div>
+              <div class="col-md-2">
+                <input type="text" class="form-control" name="FirstNumber" value="@Model.FirstNumber" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+              <div class="col-md-2">
+                 <label>Second Number</label>
+            </div>
+              <div class="col-md-2">
+                <input type="text"  class="form-control" name="SecondNumber" value="@Model.SecondNumber" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+              <div class="col-md-2">
+                 <label>Third Number</label>
+            </div>
+              <div class="col-md-2">
+                <input type="text" class="form-control" name="ThirdNumber" value="@Model.ThirdNumber"/>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="offset-md-1 col-md-2 text-left">
+                <button class="btn btn-primary" type="submit">Calculate</button>
+            </div>
+        </div>
+    </form>
+    <div class="row buttom">
+            <div class="row">
+            @if(Model.errorMessage == false)
+            {
+                <p></p>
+
+            }
+            @if(Model.errorMessage == true && Model.TotalNumbers > 0)
+            {
+                 <p><strong>You entered @Model.TotalNumbers number, The following are their statistics:</strong></p>
+                   <br />
+                    <p>Maximum: @Model.Maximum</p>
+                  <br />
+                    <p>Minimum: @Model.Minimum</p>
+                  <br />
+                    <p>Total: @Model.Sum</p>
+                  <br />
+                    <p>Average: @Model.Average</p>
+            }
+             @if(Model.errorMessage == true && Model.TotalNumbers == 0)
+                {
+                     <p><strong>You did not enter any numbers, no statistics were made!</strong></p>
+                }
+            </div>
+        </div>
+</div>
